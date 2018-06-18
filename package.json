@@ -4,9 +4,9 @@
   "description": "Compo·sing Web Compo·nents",
   "main": "index.js",
   "scripts": {
+    "2048": "parcel --no-hmr --no-cache examples/2048/index.html",
     "lint": "eslint src examples",
     "test": "ava",
-    "2048": "parcel --no-hmr --no-cache examples/2048/index.html",
     "counter": "parcel --no-hmr --no-cache examples/counter/index.html"
   },
   "repository": {
@@ -27,9 +27,17 @@
   },
   "homepage": "https://github.com/Swiip/compo#readme",
   "devDependencies": {
+    "@babel/register": "^7.0.0-beta.51",
+    "ava": "1.0.0-beta.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
-    "parcel-bundler": "^1.9.1"
+    "parcel-bundler": "^1.9.1",
+    "sinon": "^6.0.0"
+  },
+  "ava": {
+    "require": [
+      "@babel/register"
+    ]
   }
 }

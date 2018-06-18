@@ -12,7 +12,6 @@ export const component = (name, ...enhancers) => {
         }
       }
       connectedCallback() {}
-      attributeChangedCallback() {}
       update() {}
     };
     customElements.define(name, compose(...enhancers)(customElement));
