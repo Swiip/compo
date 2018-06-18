@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint src examples",
     "test": "ava",
-    "2048": "parcel examples/2048/index.html"
+    "2048": "parcel --no-hmr --no-cache examples/2048/index.html",
+    "counter": "parcel --no-hmr --no-cache examples/counter/index.html"
   },
   "repository": {
     "type": "git",

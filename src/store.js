@@ -1,7 +1,7 @@
 export const store = {};
 
-export const createStore = (reducer) => {
-  let state = {};
+export const createStore = (reducer, initialState) => {
+  let state = initialState;
   const subscribers = [];
 
   store.getState = () => state;
