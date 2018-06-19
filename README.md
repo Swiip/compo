@@ -6,6 +6,14 @@ Compo is a JavaScript Web UI tiny library powering Web Components with a functio
 
 You have to **compo**·se your **compo**·nents by enriching them with each feature through a central composing function. Markup and Style are considered as a feature you can add to your components.
 
+## Installation
+
+```
+npm install compo.js
+
+yarn add compo.js
+```
+
 ## Example
 
 ```javascript
