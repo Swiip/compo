@@ -8,7 +8,9 @@ export const createStore = (reducer, initialState) => {
   store.subscribe = listener => subscribers.push(listener);
   store.dispatch = (action) => {
     state = reducer(state, action);
-    console.log('dispatch', 'action :', action, 'new state :', state);
+    // console.log('dispatch', 'action :', action, 'new state :', state);
     subscribers.forEach(subscriber => subscriber());
   };
+
+  return store;
 };
