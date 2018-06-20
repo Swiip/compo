@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "2048": "parcel --no-hmr --no-cache examples/2048/index.html",
+    "2048-compat": "parcel --no-hmr --no-cache examples/2048-compat/index.html",
     "lint": "eslint src examples",
     "test": "ava",
     "counter": "parcel --no-hmr --no-cache examples/counter/index.html"
@@ -28,6 +29,7 @@
   "homepage": "https://github.com/Swiip/compo#readme",
   "devDependencies": {
     "@babel/register": "^7.0.0-beta.51",
+    "@webcomponents/webcomponentsjs": "^2.0.2",
     "ava": "1.0.0-beta.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
