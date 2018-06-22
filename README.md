@@ -197,6 +197,26 @@ createStore((state, action) => {
 }, 0);
 ```
 
+## Examples
+
+### Counter
+
+Most basic example exactly the same as above in this readme.
+
+Try it in CodeSanbox: https://codesandbox.io/s/yv5y14o6pj
+
+## 2048
+
+Advanced example implementing the popular 2048 game.
+
+Try it in CodeSanbox: https://codesandbox.io/s/k55w33zvkv
+
+## 2048 compat
+
+Same as 2048 but with polyfill loaded to be tested on other browsers than Chrome
+
+*Strangely doesn't work yet on CodeSanbox*
+
 ## Inspiration
 
 ### Other frameworks
