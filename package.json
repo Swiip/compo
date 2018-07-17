@@ -1,6 +1,6 @@
 {
-  "name": "compo-lib",
-  "version": "0.1.0",
+  "name": "compo",
+  "version": "0.2.0",
   "description": "Compo·sing Web Compo·nents",
   "main": "index.js",
   "scripts": {

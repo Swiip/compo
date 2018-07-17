@@ -9,9 +9,9 @@ You have to **compo**·se your **compo**·nents by enriching them with each feat
 ## Installation
 
 ```
-npm install compo-lib
+npm install compo
 
-yarn add compo-lib
+yarn add compo
 ```
 
 ## Example
@@ -26,7 +26,7 @@ import {
   withStore,
   withStyle,
   withMarkup,
-} from 'compo-lib';
+} from 'compo';
 
 createStore((state, action) => {
   switch (action.type) {
