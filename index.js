@@ -1,7 +1,7 @@
 export {
   html,
   css,
-} from './src/parser';
+} from './src/parser.js';
 
 export {
   component,
@@ -11,9 +11,9 @@ export {
   withStyle,
   withConnected,
   withStore,
-} from './src/component';
+} from './src/component.js';
 
 export {
   store,
   createStore,
-} from './src/store';
+} from './src/store.js';

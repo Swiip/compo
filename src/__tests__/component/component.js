@@ -1,7 +1,7 @@
 import test from 'ava';
 import sinon from 'sinon';
 
-import { component } from '../../component';
+import { component } from '../../component.js';
 
 let clock;
 

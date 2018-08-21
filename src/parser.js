@@ -1,4 +1,4 @@
-import { forEach, flatten } from './utils';
+import { forEach, flatten } from './utils.js';
 
 const paramRegex = /__(\d)+/;
 
