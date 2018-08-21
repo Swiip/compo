@@ -72,12 +72,12 @@ component(
 component(
   'swiip-heading',
   withMarkup(() => html`
-    <swiip-heading-container>
+    <${'swiip-heading-container'}>
       <swiip-heading-title>2048</swiip-heading-title>
       <swiip-scores>
         <swiip-score label=${'SCORE'}>123</swiip-score>
         <swiip-score label=${'BEST'}>456</swiip-score>
       </swiip-scores>
-    </swiip-heading-container>
+    </${'swiip-heading-container'}>
   `),
 );
