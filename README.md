@@ -197,6 +197,44 @@ createStore((state, action) => {
 }, 0);
 ```
 
+## Router API
+
+### withRouteEvent( ( url, props ) =&gt; void ):(Component =&gt; Component)
+
+Allow the component to have a callback on every url changes.
+
+```javascript
+component(
+  'my-component',
+  withRouteEvent((url) => console.log('new url', url))
+)
+```
+
+### withRouteAction( [ handlerName ] = 'go' ):(Component =&gt; Component)
+
+Add a `handlerName` handler in the component which allow to trigger a routing to the url in parameter.
+
+```javascript
+component(
+  'my-component',
+  withRouteAction('navigate'),
+  withHandler(({ navigate }) => (event) => navigate("/my-route")),
+)
+```
+
+### Component `compo-path`
+
+Built-in component allowing to insert a component depending on the current path.
+* `path`: the path which trigger the component.
+* `component`: the Web Component to use.
+
+```html
+<my-container>
+  <compo-path path=${"/my-route-1"} component=${"my-component-1"}></compo-path>
+  <compo-path path=${"/my-route-2"} component=${"my-component-2"}></compo-path>
+</my-container>
+```
+
 ## Examples
 
 ### Counter
@@ -216,6 +254,10 @@ Try it in CodeSanbox: https://codesandbox.io/s/k55w33zvkv
 Same as 2048 but with polyfill loaded to be tested on other browsers than Chrome
 
 *Strangely doesn't work yet on CodeSanbox*
+
+## Routing
+
+Basic routing example using the integrated router
 
 ## Inspiration
 
