@@ -8,7 +8,8 @@
     "2048-compat": "parcel --no-hmr --no-cache examples/2048-compat/index.html",
     "lint": "eslint src examples",
     "test": "ava",
-    "counter": "parcel --no-hmr --no-cache examples/counter/index.html"
+    "counter": "parcel --no-hmr --no-cache examples/counter/index.html",
+    "routing": "parcel --no-hmr --no-cache examples/routing/index.html"
   },
   "repository": {
     "type": "git",
