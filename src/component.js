@@ -1,6 +1,6 @@
-import { compose } from './utils';
-import { render } from './render';
-import { store } from './store';
+import { compose } from './utils.js';
+import { render } from './render.js';
+import { store } from './store.js';
 
 export const component = (name, ...enhancers) => {
   setTimeout(() => {
