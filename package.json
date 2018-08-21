@@ -8,6 +8,7 @@
     "2048-compat": "parcel --no-hmr --no-cache examples/2048-compat/index.html",
     "lint": "eslint src examples",
     "test": "ava",
+    "test-coverage": "nyc ava && nyc report --reporter=html",
     "counter": "parcel --no-hmr --no-cache examples/counter/index.html",
     "routing": "parcel --no-hmr --no-cache examples/routing/index.html"
   },
@@ -35,6 +36,7 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.12.0",
+    "nyc": "^12.0.2",
     "parcel-bundler": "^1.9.1",
     "sinon": "^6.0.0"
   },

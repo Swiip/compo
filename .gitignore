@@ -1,3 +1,6 @@
 node_modules
 dist
 .cache
+.nyc_output
+.DS_Store
+coverage
