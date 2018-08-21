@@ -1,6 +1,7 @@
 import { forEach, flatten } from './utils.js';
 
 const paramRegex = /__(\d)+/;
+const compoRegex = /(<\/?\s*)__(\d*)(\s*>)/g;
 
 const templateParser = (string) => {
   const template = document.createElement('template');
@@ -59,7 +60,11 @@ export function html(parts, ...params) {
       (i !== parts.length - 1 ? `${acc}${part}__${i}` : `${acc}${part}`),
     '',
   );
-  const domWithAnchors = templateParser(stringWithAnchors);
+  const stringWithComponents = stringWithAnchors.replace(
+    compoRegex,
+    (match, start, id, end) => `${start}${params[parseInt(id, 10)]}${end}`,
+  );
+  const domWithAnchors = templateParser(stringWithComponents);
   // console.log('parse', stringWithAnchors, domWithAnchors);
   replaceAnchors(domWithAnchors, params);
   return domWithAnchors.childNodes[0];
