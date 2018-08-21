@@ -6,38 +6,37 @@ import { component } from '../../component.js';
 let clock;
 
 test.before(() => {
-  global.HTMLElement = class Mock {};
-  global.customElements = {
-    define: () => {},
-  };
   clock = sinon.useFakeTimers();
 });
 
 test.after(() => {
   clock.restore();
-  delete global.HTMLElement;
-  delete global.customElements;
 });
 
 test('component function asynchronously call define with the right name', (t) => {
   const componentName = 'test';
-  const define = sinon.spy();
-  global.customElements.define = define;
+  global.customElements = { define: sinon.spy() };
+  global.HTMLElement = class Mock {};
+
   component(componentName);
-  t.false(define.called);
+
+  t.false(global.customElements.define.called);
   clock.tick(0);
-  t.true(define.called);
-  t.is(define.getCall(0).args[0], componentName);
+  t.true(global.customElements.define.called);
+  t.is(global.customElements.define.getCall(0).args[0], componentName);
 });
 
 test('component function define constructor, connectedCallback and update', (t) => {
   const componentName = 'test';
   let ComponentClass;
-  const define = (name, ComponentClassReceived) => {
-    ComponentClass = ComponentClassReceived;
+  global.customElements = {
+    define: (name, ComponentClassReceived) => {
+      ComponentClass = ComponentClassReceived;
+    },
   };
-  global.customElements.define = define;
+
   component(componentName);
+
   clock.tick(0);
   const componentInstance = new ComponentClass();
   t.deepEqual(componentInstance.__, {});
@@ -45,26 +44,44 @@ test('component function define constructor, connectedCallback and update', (t) 
   t.is(typeof componentInstance.update, 'function');
   t.is(componentInstance.connectedCallback(), undefined);
   t.is(componentInstance.update(), undefined);
-  delete global.customElements.define;
 });
 
 test('component function reuse __ data if present', (t) => {
+  const componentName = 'test';
   const originalData = { something: '' };
+  let ComponentClass;
   global.HTMLElement = class Mock {
     constructor() {
       this.__ = originalData;
     }
   };
-  const componentName = 'test';
-  let ComponentClass;
-  const define = (name, ComponentClassReceived) => {
-    ComponentClass = ComponentClassReceived;
+  global.customElements = {
+    define: (name, ComponentClassReceived) => {
+      ComponentClass = ComponentClassReceived;
+    },
   };
-  global.customElements.define = define;
+
   component(componentName);
+
   clock.tick(0);
   const componentInstance = new ComponentClass();
   t.is(componentInstance.__, originalData);
+});
+
+test('component function compose all enhancers', (t) => {
+  const componentName = 'test';
+  const f1ReturnValue = 'f1ReturnValue';
+  const f2ReturnValue = 'f2ReturnValue';
   global.HTMLElement = class Mock {};
-  delete global.customElements.define;
+  global.customElements.define = sinon.spy();
+  const composeFunction1 = sinon.stub().returns(f1ReturnValue);
+  const composeFunction2 = sinon.stub().returns(f2ReturnValue);
+
+  component(componentName, composeFunction1, composeFunction2);
+
+  clock.tick(0);
+  t.true(composeFunction2.called);
+  t.is(typeof composeFunction2.getCall(0).args[0], 'function');
+  t.true(composeFunction1.calledWith(f2ReturnValue));
+  t.true(global.customElements.define.calledWith(componentName, f1ReturnValue));
 });
