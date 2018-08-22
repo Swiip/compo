@@ -56,6 +56,7 @@ export const withStyle = handler => (Base) => {
       this.shadowRoot.appendChild(styleNode);
     }
     update() {
+      super.update();
       const styleNode = this.shadowRoot.querySelector('style');
       styleNode.childNodes[0].remove();
       styleNode.appendChild(createStyle(this));
@@ -70,7 +71,7 @@ export const withHandler = (name, handler) => Base =>
       this[name] = this[name].bind(this);
     }
     [name](event) {
-      handler(this)(event);
+      return handler(this)(event);
     }
   };
 
