@@ -285,7 +285,7 @@ Minimalism and staying close and bounded to the standards.
 
 ## Compatibility
 
-Compo is not transpiled to old JavaScript and _really_ based upon Web Components so it only works out of the box on recent Chrome. It works almost on Firefox but still needs a flag to be set.
+Compo is not transpiled to old JavaScript and _really_ based upon Web Components so it only works out of the box on recent Chrome. It's also working quite well on Firefox 63.0 without any flag.
 
 It's planned to have a compatibility build using polyfills.
 
